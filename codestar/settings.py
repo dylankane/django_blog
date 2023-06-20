@@ -16,6 +16,8 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
+development = os.environ.get('DEVELOPMENT', False)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -28,9 +30,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = development
 
-ALLOWED_HOSTS = ['codestar-django-blog-app-3f08bafc5383.herokuapp.com', 'localhost']
+if development:
+    ALLOWED_HOSTS = ['8000-dylankane-djangoblog-juzn7v17cu5.ws-eu100.gitpod.io']
+else:
+    ALLOWED_HOSTS = ['codestar-django-blog-app-3f08bafc5383.herokuapp.com']
+
 
 
 # Application definition
@@ -43,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinaru',
+    'cloudinary',
     'blog',
 ]
 
