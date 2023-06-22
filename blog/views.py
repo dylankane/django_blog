@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import CommentForm
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 
 class PostList(generic.ListView):
@@ -46,6 +47,7 @@ class PostDetail(View):
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
+            messages.success(request, "Success")
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)

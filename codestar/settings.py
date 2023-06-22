@@ -31,12 +31,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 if development:
-    ALLOWED_HOSTS = ['8000-dylankane-djangoblog-juzn7v17cu5.ws-eu100.gitpod.io']
+    ALLOWED_HOSTS = [
+        '8000-dylankane-djangoblog-juzn7v17cu5.ws-eu100.gitpod.io']
 else:
     ALLOWED_HOSTS = ['codestar-django-blog-app-3f08bafc5383.herokuapp.com']
 

@@ -2,19 +2,6 @@
 
 {% load crispy_forms_tags %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                {{ message | safe }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -107,14 +94,14 @@
             <div class="card-body">
                 <!-- For later -->
                 {% if commented %}
-                
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
                 </div>
                 {% else %}
                 {% if user.is_authenticated %}
-                <h3>Leave a comment</h3>
-                <p>Posting as: {{ user.name }}</p>
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
